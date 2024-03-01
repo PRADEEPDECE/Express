@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1= title
+  a(href="/users/create") Create User
+  table
+    tr
+      th ID
+      th Name
+      th Email
+      th Actions
+    each user in users
+      tr
+        td= user.id
+        td= user.name
+        td= user.email
+        td
+          a(href=`/users/${user.id}/delete`) Delete

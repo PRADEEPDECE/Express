@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= title
+  form(method="post", action="/users/create")
+    label(for="name") Name:
+    input(type="text", name="name")
+    br
+    label(for="email") Email:
+    input(type="email", name="email")
+    br
+    input(type="submit", value="Submit")
