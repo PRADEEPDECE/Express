@@ -1,0 +1,32 @@
+<!-- views/todos.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUD App</title>
+</head>
+<body>
+  <h1>Todo List</h1>
+  <form action="/todos/add" method="post">
+    <input type="text" name="title" placeholder="Title">
+    <input type="text" name="description" placeholder="Description">
+    <button type="submit">Add Todo</button>
+  </form>
+  <ul>
+    <% todos.forEach(todo => { %>
+      <li>
+        <h3><%= todo.title %></h3>
+        <p><%= todo.description %></p>
+        <form action="/todos/update/<%= todo.id %>" method="post">
+          <input type="text" name="title" placeholder="Title" value="<%= todo.title %>">
+          <input type="text" name="description" placeholder="Description" value="<%= todo.description %>">
+          <input type="checkbox" name="completed" <% if (todo.completed) { %>checked<% } %>>
+          <button type="submit">Update</button>
+        </form>
+        <a href="/todos/delete/<%= todo.id %>">Delete</a>
+      </li>
+    <% }); %>
+  </ul>
+</body>
+</html>
